@@ -7,6 +7,6 @@ int	main()
 	char 	c[] = "Hello";
 	char	c1[] = "World";
 	
-	printf("%s\n",strchr("Hello world", 'r'));
-	printf("%s",ft_strchr("Hello world", 'l'));
+	printf("%d\n",atoi("    -6589"));
+	printf("%d",ft_atoi("      -5123"));
 }
