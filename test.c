@@ -7,6 +7,6 @@ int	main()
 	char 	c[] = "Hello";
 	char	c1[] = "World";
 	
-	printf("%d\n",atoi("    -6589"));
-	printf("%d",ft_atoi("      -5123"));
+	printf("%d\n",memcmp("Apple","apple",5));
+	printf("%d",ft_memcmp("Apple","apple",5));
 }
