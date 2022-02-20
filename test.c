@@ -7,6 +7,6 @@ int	main()
 	char 	c[] = "Hello";
 	char	c1[] = "World";
 	
-	printf("%d\n",memcmp("Apple","apple",5));
-	printf("%d",ft_memcmp("Apple","apple",5));
+	printf("%s\n",strnstr("Apple ap  apple","apple",20));
+	printf("%s",ft_strnstr("Apple ap apple","apple",20));
 }
