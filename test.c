@@ -6,7 +6,8 @@ int	main()
 {
 	char 	c[] = "Hello";
 	char	c1[] = "World";
-	
-	printf("%s\n",strnstr("Apple ap  apple","apple",20));
-	printf("%s",ft_strnstr("Apple ap apple","apple",20));
+	size_t	i = -1;
+	printf("%s\n",memmove(c,c1,5));
+	printf("%s\n",ft_memmove(c,c1,5));
+	printf("%zu",i);
 }
