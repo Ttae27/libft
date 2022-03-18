@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 23:07:04 by phongpai          #+#    #+#             */
-/*   Updated: 2022/03/17 23:14:39 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/03/19 01:05:21 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	buffer = (char *)malloc(sizeof(char) * len + 1);
-	while (i < i + len)
+	if (!buffer)
+		return (NULL);
+	while (i < len )
 	{
-		buffer[i] = s[start - 1 + i];
+		buffer[i] = s[start + i];
 		i++;
 	}
+	buffer[i] = '\0';
+	return (buffer);
 }
