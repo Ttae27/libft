@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:28:15 by phongpai          #+#    #+#             */
-/*   Updated: 2022/03/31 13:00:28 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:11:31 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,14 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	k = 0;
 	tab = malloc(sizeof(char*) * count_word(s, c) + 1);
+	if (!tab)
+		return (NULL);
 	while (s[i])
 	{
 		j = 0;
 		tab[k] = malloc(sizeof(char) * len_word(&s[i], c) + 1);
+		if (!tab[k])
+			return (NULL);
 		while (fill_word(s[i], c))
 			tab[k][j++] = s[i++];
 		while (s[i] == c)
@@ -70,18 +74,4 @@ char	**ft_split(char const *s, char c)
 	}
 	tab[k][0] = 0;
 	return (tab);
-}
-#include <stdio.h>
-
-int	main()
-{
-	char	*s = "LOLxxlsdkgxxxxlkjgklxxlkgjkxxllkjl";
-	char    tab[100][100] = ft_split(s, 'x');
-
-	int	i;
-	int	j;
-	while (tab[i] != 0)
-	{
-		printf("%s\n", tab[i]);
-	}
 }
