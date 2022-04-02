@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 00:33:19 by phongpai          #+#    #+#             */
-/*   Updated: 2022/04/02 13:57:48 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:40:27 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int	i;
-	
+
 	while (s[i])
 	{
 		f(i, s + i);
