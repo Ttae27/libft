@@ -1,53 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 15:12:39 by phongpai          #+#    #+#             */
-/*   Updated: 2022/04/02 13:10:57 by phongpai         ###   ########.fr       */
+/*   Created: 2022/04/02 12:29:07 by phongpai          #+#    #+#             */
+/*   Updated: 2022/04/02 12:49:22 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	len(int n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	len;
-
-	len = 0;
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
 	if (n < 0)
 	{
-		len = 1;
 		n = n * -1;
+		ft_putchar_fd('-', fd);
 	}
-	while (n / 10 > 1)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len + 1);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*out;
-	int		i;
-
-	i = 0;
-	out = malloc(sizeof(char) * len(n) + 1);
-	if (!out)
-		return (NULL);
-	if (n < 0)
-	{
-		out[i++] = '-';
-		n = n * -1;
-	}
-	while (n >= 1)
-	{
-		out[i++] = (n % 10) + 48;
-		n /= 10;
-	}
-	return (out);
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd((n % 10) + 48, fd);
 }

@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 23:58:51 by phongpai          #+#    #+#             */
-/*   Updated: 2022/04/01 00:17:59 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/02 13:09:07 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 
 	i = 0;
-	if (!(str = ft_strdup(s)))
+	str = ft_strdup(s);
+	if (!str)
 		return (NULL);
 	while (str[i])
 	{

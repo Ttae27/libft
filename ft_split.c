@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:28:15 by phongpai          #+#    #+#             */
-/*   Updated: 2022/03/31 15:11:31 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/02 12:53:37 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	k = 0;
-	tab = malloc(sizeof(char*) * count_word(s, c) + 1);
+	tab = malloc(sizeof(char *) * count_word(s, c) + 1);
 	if (!tab)
 		return (NULL);
 	while (s[i])
