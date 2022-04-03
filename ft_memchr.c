@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 01:21:42 by phongpai          #+#    #+#             */
-/*   Updated: 2022/02/20 01:24:18 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/03 20:03:16 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (((char *)s)[i] == c)
-			return (s + i);
+			return ((void *)(s + i));
 		i++;
 	}
 	return (0);
