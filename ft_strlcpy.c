@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 21:29:58 by phongpai          #+#    #+#             */
-/*   Updated: 2022/02/17 22:13:30 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/03 22:55:15 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	sizesrc;
+	size_t	len_src;
 
-	sizesrc = ft_strlen(src);
+	len_src = ft_strlen(src);
 	i = 0;
-	while (i < dstsize - 1)
+	if (dstsize < 1)
+		return (len_src);
+	while (src[i] && i < dstsize - 1)
 	{
 		dst[i] = src[i];
 		i++;
 	}
 	dst[i] = '\0';
-	return (sizesrc);
+	return (len_src);
 }

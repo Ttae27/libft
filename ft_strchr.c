@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 00:31:38 by phongpai          #+#    #+#             */
-/*   Updated: 2022/02/18 02:10:07 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/03 23:01:30 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*out;
-	size_t	j;	
-	size_t	i;
+	int	i;
 
 	i = 0;
-	j = 0;
-	while (s[i] != '\0' && s[i] != c)
-		i++;
-	if (s[i] == c)
+	while (s[i])
 	{
-		while (s[i])
-		{
-			out[j] = s[i];
-			j++;
-			i++;
-		}
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
 	}
-	out[j] = '\0';
-	return (out);
+	if (c == 0)
+		return ((char *)&s[i]);
+	return (NULL);
 }

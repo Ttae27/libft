@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 22:28:23 by phongpai          #+#    #+#             */
-/*   Updated: 2022/02/18 22:38:29 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/03 23:42:16 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
 	{
-		if (s1[i] > s2[i])
-			return (1);
-		else if (s1[i] < s2[i])
-			return (-1);
+		if (s1[i] != s2[i])
+			return ((int)s1[i] - (int)s2[i]);
 		i++;
 	}
 	return (0);
