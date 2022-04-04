@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:23:32 by phongpai          #+#    #+#             */
-/*   Updated: 2022/04/03 23:29:15 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/04 10:55:23 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	len;
 
 	len = ft_strlen(s);
-	if (!*s && c)
-		return (NULL);
-	while (len >= 0)
+	while (len > 0)
 	{
 		if (s[len] == (char)c)
 			return ((char *)&s[len]);
 		len--;
+	}
+	if (len == 0)
+	{
+		if (s[len] == (char)c)
+			return ((char *)s);
+		else
+			return (NULL);
 	}
 	return (NULL);
 }

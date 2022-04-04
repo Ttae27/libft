@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 02:29:21 by phongpai          #+#    #+#             */
-/*   Updated: 2022/02/19 02:37:25 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/04 11:32:34 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	i = 0;
 	out = 0;
+	if (!str[i] || str[i] == '\e')
+		return (0);
 	while (str[i] <= 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
