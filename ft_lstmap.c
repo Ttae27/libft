@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 23:56:05 by phongpai          #+#    #+#             */
-/*   Updated: 2022/04/03 19:40:18 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:21:12 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		new_node = ft_lstnew(f(lst->content));
 		if (!new_node)
 		{
-			ft_lstclear(&new, del);
+			ft_lstclear(&new_node, del);
 			return (NULL);
 		}
 		ft_lstadd_back(&new_head, new_node);
