@@ -6,49 +6,63 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 15:12:39 by phongpai          #+#    #+#             */
-/*   Updated: 2022/04/04 23:47:10 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/06 00:11:44 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	len(int n)
+int	do_plus(int n)
 {
-	int	len;
-
-	len = 0;
 	if (n < 0)
+		return (-n);
+	return (n);
+}
+
+char	*ft_strrev(char *str)
+{
+	int		i;
+	int		j;
+	char	tmp;
+
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (i < j)
 	{
-		len = 1;
-		n = n * -1;
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
+		i++;
+		j--;
 	}
-	while (n / 10 > 1)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len + 1);
+	return (str);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*out;
+	int		neg;
 	int		i;
 
 	i = 0;
-	out = malloc(sizeof(char) * len(n) + 1);
+	neg = (n < 0);
+	out = ft_calloc(11 + neg, sizeof(char));
 	if (!out)
 		return (NULL);
-	if (n < 0)
+	if (n == 0)
+		out[0] = '0';
+	if (n == -2147483648)
 	{
-		out[i++] = '-';
-		n = n * -1;
+		out[i++] = '8';
+		n = -214748364;
 	}
-	while (n >= 1)
+	while (n != 0)
 	{
-		out[i++] = (n % 10) + 48;
+		out[i++] = (do_plus(n) % 10) + 48;
 		n /= 10;
 	}
-	out[i] = '\0';
+	if (neg)
+		out[i] = '-';
+	ft_strrev(out);
 	return (out);
 }
