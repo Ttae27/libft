@@ -6,7 +6,7 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 23:34:50 by phongpai          #+#    #+#             */
-/*   Updated: 2022/04/04 19:25:04 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:51:08 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		start++;
 	while (end > start && check(s1[end - 1], set))
 		end--;
-	out = malloc(sizeof(char *) * (end - start + 1));
+	out = malloc(sizeof(char) * (end - start + 1));
 	if (!out)
 		return (NULL);
 	while (start < end)
