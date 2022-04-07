@@ -6,7 +6,7 @@
 #    By: phongpai <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/03 19:42:06 by phongpai          #+#    #+#              #
-#    Updated: 2022/04/07 18:50:53 by phongpai         ###   ########.fr        #
+#    Updated: 2022/04/07 22:15:19 by phongpai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ all:	${NAME}
 ${NAME}:	${OBJS}
 	ar -rcs ${NAME} ${OBJS}
 
-bonus:	${OBJS} ${OBJS_B}
+bonus:		${OBJS} ${OBJS_B}
 	ar -rcs ${NAME} ${OBJS} ${OBJS_B}
 
 clean:
