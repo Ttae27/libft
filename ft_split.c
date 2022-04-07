@@ -6,72 +6,96 @@
 /*   By: phongpai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:28:15 by phongpai          #+#    #+#             */
-/*   Updated: 2022/04/06 19:29:35 by phongpai         ###   ########.fr       */
+/*   Updated: 2022/04/07 13:09:15 by phongpai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	fill_word(char s, char c)
+int	check(char s, char c)
 {
-	if (s == c)
-		return (0);
-	return (1);
+	if (s == c || s == '\0')
+		return (1);
+	return (0);
 }
 
-int	len_word(char const *s, char c)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = 0;
-	while (s[i] != c)
-		len++;
-	return (len);
-}
-
-int	count_word(char const *s, char c)
+int	count_words(char *str, char c)
 {
 	int	i;
 	int	count;
 
-	i = 0;
 	count = 0;
-	while (s[i])
+	i = 0;
+	while (str[i])
 	{
-		if (s[i] == c)
+		if (!check(str[i], c) && check(str[i + 1], c))
 			count++;
 		i++;
 	}
-	return (count + 1);
+	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+void	*write_word(char *dst, char *src, char c)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	**tab;
+	int	i;
 
 	i = 0;
-	k = 0;
-	tab = malloc(sizeof(char *) * count_word(s, c) + 1);
-	if (!tab)
-		return (NULL);
-	while (s[i])
+	while (!check(src[i], c))
 	{
-		j = 0;
-		tab[k] = malloc(sizeof(char) * len_word(&s[i], c) + 1);
-		if (!tab[k])
-			return (NULL);
-		while (fill_word(s[i], c))
-			tab[k][j++] = s[i++];
-		while (s[i] == c)
-			i++;
-		tab[k][j] = '\0';
-		k++;
+		dst[i] = src[i];
+		i++;
 	}
-	tab[k][0] = 0;
-	return (tab);
+	dst[i] = '\0';
+	return (dst);
+}
+
+void	*write_split(char **split, char *str, char c, int k)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (str[i])
+	{
+		if (check(str[i], c))
+			i++;
+		else
+		{
+			j = 0;
+			while (!check(str[i + j], c))
+				j++;
+			split[k] = (char *)malloc(sizeof(char) * (j + 1));
+			if (!split[k])
+			{
+				while (k > 0)
+					free(split[--k]);
+				return (NULL);
+			}
+			write_word(split[k++], &str[i], c);
+			i += j;
+		}
+	}
+	return ((void *)1);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**out;
+	char	*str;
+	int		k;
+
+	if (!s)
+		return (NULL);
+	str = (char *)s;
+	k = count_words(str, c);
+	out = (char **)malloc(sizeof(char *) * (k + 1));
+	if (!out)
+		return (NULL);
+	if (!(write_split(out, str, c, 0)))
+	{
+		free(out);
+		return (NULL);
+	}
+	out[k] = NULL;
+	return (out);
 }
